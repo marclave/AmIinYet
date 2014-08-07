@@ -1,8 +1,13 @@
-import re, mechanize, yaml, smtplib
+import re, mechanize, yaml, smtplib, os, platform
 
 UVIC_URL = "https://www.uvic.ca/"
 WAITLIST_URL = UVIC_URL + "BAN2P/bwyskreg.p_course_wait"
 MYPAGE_URL = UVIC_URL + "cas/login?service=" + UVIC_URL + "mypage/Login"
+
+if platform.system() == 'Windows':
+	WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__)) + "\\"
+else:
+	WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__)) + "/"
 
 def login(br, profile): 
 	
@@ -86,7 +91,7 @@ if __name__ == "__main__":
 	print "    Developed by Marc Laventure  "
 	print "================================="
 	
-	profile = yaml.safe_load(open("profile.yml", "r"))
+	profile = yaml.safe_load(open(WORKING_DIRECTORY + "profile.yml", "r"))
 	br = mechanize.Browser()
 
 	login(br, profile)
