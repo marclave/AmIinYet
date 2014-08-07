@@ -34,7 +34,7 @@ CRN:
 
 Then test run:
 ```
-  python AmIinYet.py
+python AmIinYet.py
 ```
 Now you can setup a cron to run this script, example to run everyday at midnight:
 ```
