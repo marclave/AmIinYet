@@ -38,7 +38,7 @@ python AmIinYet.py
 ```
 Now you can setup a cron to run this script, example to run everyday at midnight:
 ```
-* * * * * python /path/to/script/AmIinYet/AmIinYet.py
+0 23 * * * python /path/to/script/AmIinYet/AmIinYet.py
 ```
 If you run windows, set up a Windows Task Scheduler
  
