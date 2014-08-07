@@ -11,7 +11,9 @@ AmIinYet is an application that lets you automate registering for a waitlisted c
 
 ##Setup
 Clone this repository:
+```
 git clone https://github.com/marclave/AmIinYet.git
+```
 Modify the profile to include your information, example:
 ```
 UVIC_LOGIN:
