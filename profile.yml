@@ -1,0 +1,14 @@
+UVIC_LOGIN:
+  USERNAME: XXXXX
+  PASSWORD: YYYYY
+SEMESTER:
+  FIRST: "First Term: Sep - Dec 2014"
+  SUMMER: "Summer Session: May - Aug 2014"
+  SECOND: "Second Term: Jan - Apr 2014"
+DESIRED_SEMESTER:
+  FIRST
+GMAIL:
+  ADDRESS: A.STUDENT@gmail.com
+  PASSWORD: ZZZZZZZ
+CRN:
+  - 101010
