@@ -115,7 +115,8 @@ if __name__ == "__main__":
 	print "            AmIinYet             "
 	print "    Developed by Marc Laventure  "
 	print "================================="
-	print ""	
+	print ""
+	
 	profile = yaml.safe_load(open(WORKING_DIRECTORY + "profile.yml", "r"))	
 	br = mechanize.Browser()
 	
