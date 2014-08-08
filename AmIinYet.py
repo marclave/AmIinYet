@@ -1,4 +1,4 @@
-import re, mechanize, yaml, smtplib, os, platform
+import re, mechanize, yaml, smtplib, os, platform, sys
 
 UVIC_URL = "https://www.uvic.ca/"
 WAITLIST_URL = UVIC_URL + "BAN2P/bwyskreg.p_course_wait"
@@ -9,6 +9,26 @@ if platform.system() == 'Windows':
 else:
 	WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__)) + "/"
 
+def testingMode(br, profile):
+
+	print "\nTESTING MODE ENABLED\n"	
+	print "TESTING UVIC LOGIN..."
+	login(br, profile)
+	
+	print "\nTESTING EMAIL..."
+	sendEmail(profile, profile['CRN'][0])
+
+	print "\nDISPLAYING CRNS"
+	for course in profile['CRN']:
+		print course
+	
+	print"\nDESIRED SEMESTER"
+	print profile['SEMESTER'][profile['DESIRED_SEMESTER']]
+	
+	print "\nTESTING COMPLETE\n"
+	print "REVIEW OUTPUT FOR ERRORS BEFORE IMPLEMENTATION"
+	
+	
 def login(br, profile): 
 	
 	br.open(MYPAGE_URL)
@@ -20,6 +40,11 @@ def login(br, profile):
 	passwordControl.value = profile['UVIC_LOGIN']['PASSWORD']
 
 	br.submit()
+	if bool(re.search("The credentials you entered do not match our records",br.response().read())):
+		print "LOGIN FAILED!"
+		print "CHECK UVIC LOGIN USERNAME AND PASSWORD"
+	else:
+		print "LOGIN SUCCESSFUL"
 
 def selectTerm(br, profile):
 
@@ -90,10 +115,13 @@ if __name__ == "__main__":
 	print "            AmIinYet             "
 	print "    Developed by Marc Laventure  "
 	print "================================="
-	
-	profile = yaml.safe_load(open(WORKING_DIRECTORY + "profile.yml", "r"))
+	print ""	
+	profile = yaml.safe_load(open(WORKING_DIRECTORY + "profile.yml", "r"))	
 	br = mechanize.Browser()
-
-	login(br, profile)
-	selectTerm(br, profile)
-	register(br, profile)
+	
+	if len(sys.argv) > 1 and sys.argv[1] == "--test":
+		testingMode(br, profile)
+	else:		
+		login(br, profile)
+		selectTerm(br, profile)
+		register(br, profile)
