@@ -6,8 +6,8 @@ AmIinYet is an application that lets you automate registering for a waitlisted c
 ##Requirements
 
 1. Python is installed (Tested with version Python 2.6.8)
-2. mechanize library is installed [Mechanize download!](http://wwwsearch.sourceforge.net/mechanize/download.html)
-3. PyYAML libray is installed [PyYAML download!](pyyaml.org/wiki/PyYAML)
+2. mechanize library is installed [Mechanize download!](http://wwwsearch.sourceforge.net/mechanize/download.html) V0.2.5
+3. PyYAML libray is installed [PyYAML download!](pyyaml.org/wiki/PyYAML) V3.11
 
 ##Setup
 Clone this repository:
